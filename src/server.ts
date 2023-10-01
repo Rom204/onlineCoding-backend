@@ -11,7 +11,7 @@ dotenv.config();
 
 const app = express();
 app.use(cors({
-  origin: "*", // TODO: Change this to your domain name when you deploy the project!
+  origin: "https://main--visionary-rabanadas-fbd1e6.netlify.app", // TODO: Change this to your domain name when you deploy the project!
 }));
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
