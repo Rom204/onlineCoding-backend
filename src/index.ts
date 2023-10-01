@@ -4,7 +4,7 @@ import { fetchCodeAllCodeProblems } from './utils/helpers'
 const prisma = new PrismaClient()
 
 async function main() {
-  // ... you will write your Prisma Client queries here
+// can create here code problems
 //   await prisma.code.create({
 //     data: {
 //       title: 'sum two numbers',
@@ -20,7 +20,11 @@ async function main() {
 // }`,
 //     }
 //   })
-  fetchCodeAllCodeProblems();
+  try {
+    await fetchCodeAllCodeProblems();
+  } catch (error) {
+    console.log('Error:', error);
+  }
 }
 
 main()
