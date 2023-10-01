@@ -50,7 +50,7 @@ io.on('connection', (socket) => {
     console.log(`Client disconnected`);
   })
 })
-
-server.listen(3000, () => {
-  console.log(`server running at http://localhost:3000`)
+const port = "onlinecoding-backend-production.up.railway.app"
+server.listen(port, () => {
+  console.log(`server running at ${port}`)
 });
