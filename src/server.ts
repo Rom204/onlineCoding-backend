@@ -33,6 +33,7 @@ app.get('/', async (req: Request, res: Response) => {
   }
 });
 
+
 io.on('connection', (socket) => {
   console.log(`New Client connected ${socket.id}`);
 
@@ -52,6 +53,11 @@ io.on('connection', (socket) => {
     console.log(`Client disconnected`);
   })
 })
+
+app.get('*', (request: Request, response: Response) => {
+  response.status(504).json("what to do ? failed");
+});
+
 const port = "onlinecoding-backend-production.up.railway.app"
 server.listen(port, () => {
   console.log(`server running at ${port}`)
