@@ -16,6 +16,18 @@ app.use(cors({
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ limit: "50mb", extended: true }));
 
+app.get('/', async (req: Request, res: Response) => {
+  try {
+    res.status(202).json(await fetchCodeAllCodeProblems())
+  } catch (err) {
+    console.dir(err)
+  }
+});
+// catch errors
+app.get('*', (request: Request, response: Response) => {
+  response.status(504).json("what to do ? failed");
+});
+
 const server = createServer(app);
 
 const io = new Server(server, {
@@ -25,13 +37,7 @@ const io = new Server(server, {
   }
 });
 
-app.get('/', async (req: Request, res: Response) => {
-  try {
-    res.status(202).json(await fetchCodeAllCodeProblems())
-  } catch (err) {
-    console.dir(err)
-  }
-});
+
 
 
 io.on('connection', (socket) => {
@@ -54,9 +60,7 @@ io.on('connection', (socket) => {
   })
 })
 
-app.get('*', (request: Request, response: Response) => {
-  response.status(504).json("what to do ? failed");
-});
+
 
 // const port = "onlinecoding-backend-production.up.railway.app"
 const port = process.env.PORT || 3000
