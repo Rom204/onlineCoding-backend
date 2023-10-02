@@ -60,6 +60,6 @@ app.get('*', (request: Request, response: Response) => {
 
 // const port = "onlinecoding-backend-production.up.railway.app"
 const port = process.env.PORT || 3000
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`server running at ${port}`)
 });
