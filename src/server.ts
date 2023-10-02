@@ -24,13 +24,13 @@ app.get('/test', (res: Response) => {
   }
 })
 
-app.get('/', async (req: Request, res: Response) => {
-  try {
-    res.status(202).json(await fetchCodeAllCodeProblems())
-  } catch (err) {
-    console.dir(err)
-  }
-});
+// app.get('/', async (req: Request, res: Response) => {
+//   try {
+//     res.status(202).json(await fetchCodeAllCodeProblems())
+//   } catch (err) {
+//     console.dir(err)
+//   }
+// });
 // catch errors
 app.get('*', (request: Request, response: Response) => {
   response.status(504).json("what to do ? failed");
