@@ -40,7 +40,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "https://main--visionary-rabanadas-fbd1e6.netlify.app",
+    origin: "https://visionary-rabanadas-fbd1e6.netlify.app/",
     methods: ['GET', 'POST']
   }
 });
