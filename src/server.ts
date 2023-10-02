@@ -58,7 +58,8 @@ app.get('*', (request: Request, response: Response) => {
   response.status(504).json("what to do ? failed");
 });
 
-const port = "onlinecoding-backend-production.up.railway.app"
-server.listen(3000, () => {
+// const port = "onlinecoding-backend-production.up.railway.app"
+const port = process.env.PORT || 3000
+app.listen(port, () => {
   console.log(`server running at ${port}`)
 });
