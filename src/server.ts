@@ -49,22 +49,21 @@ const io = new Server(server, {
 
 
 io.on('connection', (socket) => {
-  console.log(`New Client connected ${socket.id}`);
+  console.log(`New Client: ${socket.id} connected to server`);
 
   socket.on('CONNECTED_TO_ROOM', ({ roomId }) => {
-    console.log(`Connected to Room:${roomId}`);
+    console.log(`Client: ${socket.id} Connected to ROOM:${roomId}`);
     const roomName = `ROOM:${roomId}`;
     socket.join(roomName);
   })
 
   socket.on('CODE_CHANGED', ({ codeValue, roomId }) => {
-    console.log('Code_changed', codeValue);
+    console.log(`Code changed: ${codeValue} at ROOM: ${roomId} `);
     const roomName = `ROOM:${roomId}`;
-    // socket.broadcast.emit('CODE_CHANGED', code);
     socket.to(roomName).emit('CODE_CHANGED', codeValue);
   })
   socket.on('disconnect', () => {
-    console.log(`Client disconnected`);
+    console.log(`Client: ${socket.id} disconnected from server`);
   })
 })
 
